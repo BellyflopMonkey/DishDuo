@@ -1,0 +1,52 @@
+﻿@model DishDuo.Models.LoginViewModel;
+
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">    
+    <div class="row justify-content-center">       
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 position-relative">
+            <img src="~/images/LongBright.jpeg" class="w-100 rounded shadow" style="transform: scale(2); object-fit: cover;" />
+            <div class="position-absolute top-50 start-50 translate-middle bg-white rounded shadow p-3">
+                <style>
+                    .form-control {
+                        height: 50px; /*JB Increase the height of the input fields */
+                        font-size: 18px; /*JB Increase the font size inside the input fields */
+                    }
+
+                    .btn {
+                        height: 50px; /*JB Increase the height of the button */
+                        font-size: 18px; /*JB Increase the font size inside the button */
+                    }
+
+                    form {
+                        width: 500px; /*JB Increase the width of the form */
+                        margin: auto; /*JB Center the form */
+                    }
+                </style>
+                <form autocomplete="off" method="post" class="p-3">
+                    <div class="mb-3">
+                        <h2 class="text-pink">Login</h2>
+                    </div>
+                    <div class="mb=3">
+                        @Html.ValidationSummary()
+                    </div>
+                    <div class="form-floating mb-3">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder="Email" })
+                        <label class="form-label" for="Email">Email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        @Html.TextBoxFor(m => m.Password, new { @class = "form-control", placeholder="Password", type = "Password" })
+                        <label class="form-label" for="Password">Password</label>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-sm btn-dark w-100 p-2 shadow rounded" type="submit">Login</button>
+                    </div>
+                    <div class="mb-3">
+                        <span>Don't have an account?</span><a asp-controller="account" asp-action="Register" class="nav-link">Register here.</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

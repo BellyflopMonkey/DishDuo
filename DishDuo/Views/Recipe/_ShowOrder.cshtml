@@ -1,0 +1,52 @@
+﻿@model DishDuo.Models.OrderRecipeDetails
+
+<div class="container-fluid shadow rounded">
+    <div class="row">
+        <div class="col-12">
+            <img src="@Model.Image_url" class="w-101 id=order-img" />
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
+            <h2 class="text-dark">@Model.Title</h2>
+        </div>
+        <form method="post">
+            <input type="hidden" value="@Model.Id" name="RecipeId" />
+            <input type="hidden" value="@Model.Title" name="RecipeName" />
+            <input type="hidden" value="@ViewBag.UserId" name="UserId" />
+            <span class="addToCartIcon" onclick="cart.call(this)"
+                        data-recipeId="@Model.Id">
+                            <i class="fa-regular fa-heart fs-3">
+
+                            </i></span>
+            
+        </form>
+
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                <div class="table-responsive p-2">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var ing in Model.Ingredients)
+                            {
+                                <tr>
+                                    <td>@ing.Description</td>
+                                    <td>@ing.Quantity</td>
+                                    <td>@ing.unit</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

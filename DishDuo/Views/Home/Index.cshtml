@@ -1,0 +1,114 @@
+﻿@{
+    //JB Set the title of the view
+    ViewData["Title"] = "Home Page";
+}
+
+<!--JB Main Container-->
+<div class="container">
+    <!--JB carousel and search row-->
+    <div class="row shadow rounded">
+        <!--JB Carousel column-->
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <!--JB Carousel-->
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <!--JB Carousel inner-->
+                <div class="carousel-inner h-100">
+                    <!--JB Carousel items-->
+                    <div class="carousel-item h-300 active">
+                        <img src="/images/carouselImages/SeafoodPasta.png" class="d-block w-100" alt="Recipes">
+                    </div>
+                    <div class="carousel-item h-300">
+                        <img src="/images/carouselImages/SeafoodBisque.png" class="d-block w-100" alt="Recipes">
+                    </div>
+                    <div class="carousel-item h-300">
+                        <img src="/images/carouselImages/Torte.png" class="d-block w-100" alt="Recipes">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="mb-3">
+                <h2>
+                    Search the Best <span class="text-pink fst-italic">Recipes</span> and
+                    <span class="text-success">Plan Your Next Meal.</span>
+                </h2>
+            </div>
+            <!--JB Search Options-->
+            <div class="mb-1 p-3">
+                <span><i class="fa-solid fa-magnifying-glass text-success mx-2 fs-4"></i></span>
+                <span class="fs-5 text-dark fst-italic">Search Your Recipies</span>
+            </div>
+            <div class="mb-1 p-3">
+                <span><i class="fa-solid fa-plate-wheat text-success mx-2 fs-4"></i></span>
+                <span class="fs-5 text-dark fst-italic">Save Your Meals</span>
+            </div>
+            <div class="mb-1 p-3">
+                <span><i class="fa-solid fa-people-roof text-success mx-2 fs-4"></i></span>
+                <span class="fs-5 text-dark fst-italic">Share with Family and Friends</span>
+            </div>
+        </div>
+    </div>
+    <!--JB Recipe row-->
+    <div class="row mt-3">
+        <!--JB Recipe column-->
+        <div class="col-12 mb-3">
+            <!--JB Recipe header-->
+            <h2 class="text-dark">Try These Recipies</h2>
+            <!--JB recipe cards-->
+            <div id="todayRecipe" class="row">
+                <!--JB Recipe card-->
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <div class="shadow rounded card dishCard">
+                        <image class="card-img-top h-75"
+                               src="http://forkify-api.herokuapp.com/images/BBQChickenPizzawithCauliflowerCrust5004699695624ce.jpg" alt="dish" />
+                        <div class="card-body">
+                            <p class="card-title fw-bold fs-6 text-dark">Cauliflower Pizza Crust (with BBQ Chicken Pizza)</p>
+                            <div class="d-flex flex-wrap justify-content-between">
+                                <a href="/Recipe/Order?id=5ed6604591c37cdc054bcd09"
+                                   class="GoToRecipe btn btn-sm bg-black text-white shadow rounded p-2">Go to Recipe</a>
+                                <span class="addToCartIcon" onclick="cart.call(this)" data-recipeId="5ed6604591c37cdc054bcd09">
+                                    <i class="fa-regular fa-heart fs-3"></i>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--JB Recipe card-->
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <div class="shadow rounded card dishCard">
+                        <img class="card-img-top h-75"
+                             src="http://forkify-api.herokuapp.com/images/8056778926_78fe9ec560d0d1.jpg" />
+                        <div class="card-body">
+                            <p class="card-title fw-bold fs-6 text-dark">Pumpkin Cinnamon Rolls</p>
+                            <div class="d-flex flex-wrap justify-content-between">
+                                <a href="/Recipe/Order?id=5ed6604591c37cdc054bcf6f"
+                                   class="GoToRecipe btn btn-sm bg-black text-white shadow rounded p-2">Go to Recipe</a>
+                                <span class="addToCartIcon" onclick="cart.call(this)" data-recipeId="5ed6604591c37cdc054bcf6f">
+                                    <i class="fa-regular fa-heart fs-3"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--JB Recipe card-->
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <div class="shadow rounded card dishCard">
+                        <img class="card-img-top h-75"
+                             src="http://forkify-api.herokuapp.com/images/4814287904_bb43e024c9_be8a9.jpg" />
+                        <div class="card-body">
+                            <p class="card-title fw-bold fs-6 text-dark">Grilled Chicken with Lemon Basil Pasta</p>
+
+                            <div class="d-flex flex-wrap justify-content-between">
+                                <a href="/Recipe/Order?id=5ed6604591c37cdc054bccb0"
+                                   class="GoToRecipe btn btn-sm bg-black text-white shadow rounded p-2">Go to Recipe</a>
+                                <span class="addToCartIcon" onclick="cart.call(this)" data-recipeId="5ed6604591c37cdc054bccb0">
+                                    <i class="fa-regular fa-heart fs-3"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

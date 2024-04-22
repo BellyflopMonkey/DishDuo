@@ -1,0 +1,35 @@
+﻿@*JB*@
+@model IEnumerable<DishDuo.Models.Recipe>
+
+    <!--JB loop through each recipe in the model-->
+@foreach (var recipe in Model)
+{
+    <!--JB Recipe card column-->
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 mb-3">
+        <!--JB recipe card container-->
+        <div class="shadow rounded p-2">
+            <!--JB Recipe card-->
+            <div class="card dishCard">
+                <!--JB Recipe image-->
+                <img src="@recipe.Image_url" class="card-img-top h-50" />
+                <!--JB recipe details-->
+                <div class="card-body">
+                    <!--JB recipe title-->
+                    <p class="card-title fw-bold fs-6 text-dark">
+                        @recipe.Title
+                        </p>
+                    <!--JB Recipe publisher-->
+                    <span class="card-text">@recipe.Publisher</span>
+                    <div class="d-flex flex-wrap justify-content-between">
+                        <a href="/Recipe/Order?id=@recipe.Id" class="GoToRecipe btn btn-sm bg-black text-white shadow rounded p-2">Go to Recipe</a>
+                        <span class="addToCartIcon" onclick="cart.call(this)"
+                        data-recipeId="@recipe.Id">
+                            <i class="fa-regular fa-heart fs-3">
+
+                            </i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
