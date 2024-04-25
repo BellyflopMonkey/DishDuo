@@ -33,20 +33,20 @@ namespace DishDuo.Controllers
         public IActionResult Search([FromQuery] string recipe)
         {
             ViewBag.Recipe = recipe;
-            return View();
+            return View(); //Returns view with the provided recipe
         }
         public IActionResult Order([FromQuery] string id) 
         {
             ViewBag.Id = id;
-            return View();
+            return View(); //Returns order screen of the provided id
         }
         [HttpPost]
         public async Task<IActionResult> ShowOrder(OrderRecipeDetails orderRecipeDetails) 
         {
 
-            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var user = await _userManager.GetUserAsync(HttpContext.User); //Sets user to the HTTPContext user
             ViewBag.UserId = user?.Id;
-            return PartialView("_ShowOrder",orderRecipeDetails);
+            return PartialView("_ShowOrder",orderRecipeDetails); //Returns partial view of the order using the provided details
         }
         [HttpPost]
         [Authorize]
@@ -57,9 +57,9 @@ namespace DishDuo.Controllers
             {
                 context.Orders.Add(order);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Recipe");
+                return RedirectToAction("Index", "Recipe"); //Returns recipe index if modelstate is valid
             }
-            return RedirectToAction("Order", "Recipe", new {id=order.Id});
+            return RedirectToAction("Order", "Recipe", new {id=order.Id}); //Returns recipe order with a new order id
         }
     }
 }

@@ -12,13 +12,13 @@ namespace DishDuo.Controllers
         private readonly IData data;
         private readonly DishDuoDBContext context;
 
-        public CartController(IData data, DishDuoDBContext context) //CartController constructor
+        public CartController(IData data, DishDuoDBContext context)
         {
-            this.data = data; //Sets data to IData varaible
-            this.context = context; //Sets context to DishDuoDBContext variable
+            this.data = data; 
+            this.context = context;
         }
 
-        public async Task<IActionResult> Index() //Index task method
+        public async Task<IActionResult> Index()
         {
             var user = await data.GetUser(HttpContext.User); //user Variable is set to HTTPContext user
             var cartsList = context.Carts.Where(c => c.UserId == user.Id).ToList(); //Cartslist variable is set to carts context as a list
@@ -26,34 +26,34 @@ namespace DishDuo.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SaveCart(Cart cart) //SaveCart task method
+        public async Task<IActionResult> SaveCart(Cart cart) 
         {
             var user = await data.GetUser(HttpContext.User); //user Variable is set to HTTPContext user
             cart.UserId = user?.Id; //UserId in cart is set to the userId
 
-            if (ModelState.IsValid) //Checks if the modelstate is valid
+            if (ModelState.IsValid) 
             {
-                context.Carts.Add(cart); //adds the cart to the cart context
-                context.SaveChanges(); //Saves changes to context
-                return Ok(cart); //returns cart
+                context.Carts.Add(cart); 
+                context.SaveChanges();
+                return Ok(cart);
             }
 
             return BadRequest(); //returns BadRequest
         }
         [HttpGet]
-        public async Task<IActionResult> GetAddedCarts() //GetAddedCarts method
+        public async Task<IActionResult> GetAddedCarts()
         {
             var user = await data.GetUser(HttpContext.User); //user Variable is set to HTTPContext user
             var carts = context.Carts.Where(c => c.UserId == user.Id).Select(c => c.RecipeId).ToList(); //Carts variable is set to carts context as a list
             return Ok(carts);
         }
         [HttpPost]
-        public IActionResult RemoveCartFromList(string Id) //RemoveCartFromList action result method
+        public IActionResult RemoveCartFromList(string Id)
         {
-            if (!string.IsNullOrEmpty(Id)) //Runs if the Id string is not null/empty
+            if (!string.IsNullOrEmpty(Id))
             {
                 var cart = context.Carts.Where(c => c.RecipeId == Id).FirstOrDefault(); //Sets cart variable to carts context using current Id
-                if (cart != null) //Runs if the cart is not null
+                if (cart != null) 
                 {
                     context.Carts.Remove(cart); //Removes current cart item
                     context.SaveChanges(); //Saves context changes
@@ -64,7 +64,7 @@ namespace DishDuo.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCartList() //GetCartList task method
+        public async Task<IActionResult> GetCartList()
         {
             var user = await data.GetUser(HttpContext.User); //user Variable is set to HTTPContext user
             var cartList = context.Carts.Where(c => c.UserId == user.Id).Take(3).ToList(); //CartsList variable is set to carts context as a list

@@ -16,14 +16,14 @@ namespace DishDuo.Controllers
             _signInManager = signInManager;
         }
 
-        public IActionResult Login() //Login actionresult method
+        public IActionResult Login()
         {
             return View(); //Returns the "Login" view
         }
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel login, string? returnUrl) //Login task method
+        public async Task<IActionResult> Login(LoginViewModel login, string? returnUrl)
         {
-            if (ModelState.IsValid) //Checks if the ModelState is valid
+            if (ModelState.IsValid)
             {
                 var result = await _signInManager.PasswordSignInAsync(login.Email, login.Password, false, false); //Variable for sign-in using _signinmanager
                 if (result.Succeeded) //Checks if result variable was successful
@@ -35,24 +35,24 @@ namespace DishDuo.Controllers
 
                 ModelState.AddModelError("", "Invalid login Attempt"); //Displays if the result variable fails
             }
-            return View(login); //Redirects to login screen
+            return View(login);
         }
 
-        public async Task<IActionResult> Logout() //Logout task method
+        public async Task<IActionResult> Logout() 
         {
-            await _signInManager.SignOutAsync(); //Log out await using _signinmanager
-            return RedirectToAction("Index", "Home"); //Redirects to homepage
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
 
 
-        public IActionResult Register() //Register result method
+        public IActionResult Register()
         {
             return View(); //Returns register view
         }
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel register) //Register task method
+        public async Task<IActionResult> Register(RegisterViewModel register)
         {
-            if (ModelState.IsValid) //Checks if the modelstate is valid
+            if (ModelState.IsValid)
             {
                 var user = new ApplicationUser() //user variable from ApplicationUser class
                 {
