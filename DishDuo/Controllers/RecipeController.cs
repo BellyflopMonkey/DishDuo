@@ -30,16 +30,19 @@ namespace DishDuo.Controllers
         {
             return PartialView("_RecipeCard", recipes);
         }
+        //Search method
         public IActionResult Search([FromQuery] string recipe)
         {
             ViewBag.Recipe = recipe;
             return View(); //Returns view with the provided recipe
         }
+        //Order query method
         public IActionResult Order([FromQuery] string id) 
         {
             ViewBag.Id = id;
             return View(); //Returns order screen of the provided id
         }
+        //Show order task
         [HttpPost]
         public async Task<IActionResult> ShowOrder(OrderRecipeDetails orderRecipeDetails) 
         {
@@ -48,6 +51,7 @@ namespace DishDuo.Controllers
             ViewBag.UserId = user?.Id;
             return PartialView("_ShowOrder",orderRecipeDetails); //Returns partial view of the order using the provided details
         }
+        //Order method
         [HttpPost]
         [Authorize]
         

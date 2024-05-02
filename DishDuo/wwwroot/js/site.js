@@ -62,13 +62,14 @@ function showRecipes(recipes, id) {
         }
     });
 }
-
+// Function to display recipes
 async function getOrderRecipe(id, showId) {
     let resp = await fetch(`${apiURL}/${id}?key=${apikey}`);
     let result = await resp.json();
     let recipe = result.data.recipe;
     showOrderRecipeDetails(recipe, showId);
 }
+//Function to show selected recipe
 function showOrderRecipeDetails(orderRecipeDetails, showId) {
     $.ajax({
         url: '/Recipe/ShowOrder',

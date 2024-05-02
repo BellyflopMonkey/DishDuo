@@ -15,11 +15,12 @@ namespace DishDuo.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-
+        //Login method
         public IActionResult Login()
         {
             return View(); //Returns the "Login" view
         }
+        //Login task
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel login, string? returnUrl)
         {
@@ -37,18 +38,19 @@ namespace DishDuo.Controllers
             }
             return View(login);
         }
-
+        //Logout task
         public async Task<IActionResult> Logout() 
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
 
-
+        //Registration method
         public IActionResult Register()
         {
             return View(); //Returns register view
         }
+        //Registration task
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel register)
         {

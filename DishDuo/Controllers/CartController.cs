@@ -17,14 +17,14 @@ namespace DishDuo.Controllers
             this.data = data; 
             this.context = context;
         }
-
+        //Index display task
         public async Task<IActionResult> Index()
         {
             var user = await data.GetUser(HttpContext.User); //user Variable is set to HTTPContext user
             var cartsList = context.Carts.Where(c => c.UserId == user.Id).ToList(); //Cartslist variable is set to carts context as a list
             return View(cartsList); //Returns cart view with the cartsList variable
         }
-
+        //Cart data saving task
         [HttpPost]
         public async Task<IActionResult> SaveCart(Cart cart) 
         {
@@ -40,6 +40,7 @@ namespace DishDuo.Controllers
 
             return BadRequest(); //returns BadRequest
         }
+        //Get data added to cart task
         [HttpGet]
         public async Task<IActionResult> GetAddedCarts()
         {
@@ -47,6 +48,7 @@ namespace DishDuo.Controllers
             var carts = context.Carts.Where(c => c.UserId == user.Id).Select(c => c.RecipeId).ToList(); //Carts variable is set to carts context as a list
             return Ok(carts);
         }
+        //Remove from cart method
         [HttpPost]
         public IActionResult RemoveCartFromList(string Id)
         {
@@ -62,7 +64,7 @@ namespace DishDuo.Controllers
             }
             return BadRequest(); //Returns BadRequest
         }
-
+        //Get cart task
         [HttpGet]
         public async Task<IActionResult> GetCartList()
         {

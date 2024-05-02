@@ -10,6 +10,7 @@
         <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10">
             <h2 class="text-dark">@Model.Title</h2>
         </div>
+        <!--Form to add a recipe to the user's cart-->
         <form method="post">
             <input type="hidden" value="@Model.Id" name="RecipeId" />
             <input type="hidden" value="@Model.Title" name="RecipeName" />
@@ -28,12 +29,14 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <!--Table headers-->
                                 <th>Description</th>
                                 <th>Quantity</th>
                                 <th>Unit</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <!--Loops through all ingredients in the recipe, puts data in table-->
                             @foreach (var ing in Model.Ingredients)
                             {
                                 <tr>
